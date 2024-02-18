@@ -17,5 +17,6 @@ PING forcesafesearch.google.com (216.239.38.120) 56(84) bytes of data.
 --- forcesafesearch.google.com ping statistics ---
 6 packets transmitted, 6 received, 0% packet loss, time 5007ms
 rtt min/avg/max/mdev = 4.638/5.087/6.042/0.518 ms
+```
 
 ![Alt text](test.png)
