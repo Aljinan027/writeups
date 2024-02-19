@@ -3,7 +3,7 @@ Files can always be changed in a secret way. Can you find the flag? cat.jpg
 
 Here is the cat.jgp file look like
 
-![Alt text](cat.jpg)
+![Alt text](images/cat.jpg)
 
 ## Hints
 - Look at the details of the file
@@ -14,13 +14,13 @@ Here is the cat.jgp file look like
    
    > exiftool cat.jpg
 
-   ![Alt text](cek-metadata.png)
+   ![Alt text](images/cek-metadata.png)
 
    Terlihat pada bagian license ada data yang di modifikasi menjadi sebuah enkripsi type base64 
    
 2. Decrypt Base64 menggunakan cyberchef
    
-   ![Alt text](Decrypt-Base64.png)
+   ![Alt text](images/Decrypt-Base64.png)
 
 
 
