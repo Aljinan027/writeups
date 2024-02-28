@@ -119,7 +119,7 @@ Nikto
 
 # Exploitation
 
-Pada scan menggunakan nikto terdapat file `phpinfo.php` yang terdapat informasi credential user untuk login `Charis:14m@we50m3`
+Pada scan menggunakan nikto terdapat file `phpinfo.php` yang terdapat informasi credential user untuk login `Charis : 14m@we50m3`
 
 ![alt text](images/credential.png)
 
@@ -149,4 +149,13 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkNoYXJpcyIsInJvbGUiOiJhZG1
 ![alt text](images/secret-page.png)
 
 
- 
+Seorang admin meninggalkan credential ssh yang mana kita bisa masuk menggunakan ssh tersebut `berg : wann@Bep0r0r0`. user breg disini memiliki akses ke semua user dan host yang bisa menjalankan command apapun.
+
+![alt text](images/flag.png)
+
+
+
+### Solve
+
+![alt text](images/solve-user.png)
+![alt text](images/solve-root.png)
