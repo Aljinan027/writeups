@@ -1,5 +1,11 @@
 
-![Alt text](imageSource/image1.jpg)
+---
+# Cyber Apocalypse 2024: Hacker Royale
+
+
+![Alt text](img/image1.jpg)
+
+
 ### Event Overview
 “Dulu kita hidup damai dan punya cukup teknologi untuk membuat kita semua bahagia. Apa pendapat Anda tentang hal itu?
 
@@ -25,12 +31,17 @@ Lampu-lampu kota kami mendatangkan orang-orang dari berbagai penjuru. Ini adalah
 Mereka mengadakan The Fray setiap empat tahun untuk menemukan "yang terbaik dan tercerdas". Mereka yang berhasil melalui racikan tantangan teknologi mereka akan menjadi "Legioner", faksi yang didanai dan dapat duduk santai di antara pertarungan berikutnya.
 
 ### Tantangan Yang Diselesaikan
-[Misc](Misc.md)
+[Misc](Misc/README.md)
 
-[Forensics](Forensics.md)
+[Forensics](Forensics/README.md)
 
-[Web](Web.md)
+[Web](Web/README.md)
 
-[Crypto](Crypto.md)
+[Crypto](Cryptography/README.md)
 
-[Reverse](Reverse.md)
+[Reverse](Reverse/README.md)
+
+[Hardware](Hardware/README.md)
+
+
+![Alt Text](img/Point.png)
